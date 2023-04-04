@@ -42,3 +42,35 @@ It is possible to plot multiple lines on the same figure and open multiple figur
 
 ![commands_gif](https://user-images.githubusercontent.com/93544266/229774137-fcbc08f4-c2fe-4eca-a686-597482500c07.gif)
 
+### Code for example2
+
+```C++
+SFMLPlot fig("Title");
+
+std::vector<float> x;
+int num = 1000;
+x.reserve(num);
+for (float i = 0; i < num; i++)
+{
+  x.emplace_back(i / 4.0f);
+}
+
+std::vector<float> y;
+y.reserve(num);
+for (auto i = 0; i < num; i++)
+{
+  y.push_back(x[i] * x[i]);
+}
+
+std::vector<float> y_;
+y_.reserve(num);
+for (auto i = 0; i < num; i++)
+{
+  y_.push_back(x[i] * x[i] / 2.0f);
+}
+
+fig.plot(x, y, sf::Color::Red, 5.0f);
+fig.plot(x, y_, sf::Color::Green);
+SFMLPlot::show();
+  
+  ```
